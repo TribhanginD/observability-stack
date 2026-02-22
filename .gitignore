@@ -1,0 +1,5 @@
+.env
+*.log
+/elasticsearch_data/
+/grafana_data/
+.DS_Store
