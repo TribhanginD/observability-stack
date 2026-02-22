@@ -21,7 +21,7 @@ def detect_anomalies():
     
     while True:
         val = get_metric('request_latency_current') # Custom metric from simulated stream
-        if val is not null:
+        if val is not None:
             history.append(val)
             if len(history) > 30:
                 history.pop(0)
