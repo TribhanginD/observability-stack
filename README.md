@@ -1,6 +1,23 @@
 # Observability Stack
 Centralized monitoring and alerting platform.
 
+
+## Architecture
+```mermaid
+graph TD
+    S1[Incident Center] -->|Scrape| PR[Prometheus]
+    S2[Order Services] -->|Scrape| PR
+    PR -->|Query| GR[Grafana]
+    
+    S1 -->|Events| K{Kafka}
+    S2 -->|Events| K
+    K -->|Ingest| LS[Logstash]
+    LS -->|Index| ES[(Elasticsearch)]
+    
+    PR -->|PromQL| AD[Python Anomaly Detector]
+    AD -->|Alert| Log[Logs/Alerts]
+```
+
 ## Overview
 A telemetry stack for metrics, logs, and anomaly detection across distributed services.
 
